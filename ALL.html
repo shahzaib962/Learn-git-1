@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+
+<script>
+    // Function to perform the selected operation
+    function performOperation() {
+        // Get the values entered by the user
+        var num1 = parseFloat(document.getElementById('num1').value);
+        var num2 = parseFloat(document.getElementById('num2').value);
+
+        // Check if the entered values are valid numbers
+        if (isNaN(num1) || isNaN(num2)) {
+            alert("Please enter valid numbers");
+            return;
+        }
+
+        // Get the selected operation
+        var operation = document.getElementById('operation').value;
+
+        // Perform the selected operation
+        var result;
+        switch (operation) {
+            case 'add':
+                result = num1 + num2;
+                break;
+            case 'subtract':
+                result = num1 - num2;
+                break;
+            case 'multiply':
+                result = num1 * num2;
+                break;
+            case 'divide':
+                if (num2 === 0) {
+                    alert("Cannot divide by zero");
+                    return;
+                }
+                result = num1 / num2;
+                break;
+            default:
+                alert("Invalid operation");
+                return;
+        }
+
+        // Display the result
+        document.getElementById('result').innerHTML = "Result: " + result;
+    }
+</script>
+
+<h2>Calculator</h2>
+<label for="num1">Enter Number 1: </label>
+<input type="text" id="num1">
+
+<label for="num2">Enter Number 2: </label>
+<input type="text" id="num2">
+
+<label for="operation">Select Operation: </label>
+<select id="operation">
+    <option value="add">Addition</option>
+    <option value="subtract">Subtraction</option>
+    <option value="multiply">Multiplication</option>
+    <option value="divide">Division</option>
+</select>
+
+<button onclick="performOperation()">Calculate</button>
+
+<p id="result"></p>
+
+</body>
+</html>
